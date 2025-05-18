@@ -1,42 +1,27 @@
-import java.util.Scanner;
-
+import java.util.Scanner; 
 public class Lab4task1 {
+    public double calculateAbsoluteDeviation(double[] array) {
+        // Крок 1: Обчислити середнє значення
+        double sum = 0;
+        for (double value : array) {
+            sum += value;
+        }
+        double average = sum / array.length;
+
+        // Крок 2: Обчислити суму абсолютних відхилень від середнього
+        double totalDeviation = 0;
+        for (double value : array) {
+            totalDeviation += Math.abs(value - average);
+        }
+
+        return totalDeviation;
+    }
+
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-
-        int num = 12; 
-        int[] Arr = {0, 13, -5, 6, 3, 3, -2, 4, 2, 7, 12, -6}; 
-
-        System.out.print("Input a number: " + num);
-        int k = 3;
-        int m = 2;
-
-        System.out.print("\nArr=( ");
-        for (int i = 0; i < num; i++) {
-            System.out.print(Arr[i] + " ");
-        }
-        System.out.println(")");
-
-       
-        int min = Arr[0], ind = 0;
-        for (int i = 1; i < num; i++) {
-            if (Arr[i] < min) {
-                min = Arr[i];
-                ind = i;
-            }
-        }
-
-        
-        int nk = 0, nm = 0;
-        for (int i = 0; i < num; i++) {
-            if (Arr[i] > k) nk++;
-            if (Arr[i] > 2 * m) nm++;
-        }
-
-        System.out.println("min= " + min);
-        System.out.println(">k " + nk);
-        System.out.println("ind= " + ind);
-        System.out.println(">2*m= " + nm);
+        Lab4task1 lab = new Lab4task1();
+        double[] A = {5, -3, 8, 2, 7, -1, 4, 6, -2, 0, 9, 1};
+        double result = lab.calculateAbsoluteDeviation(A);
+        System.out.println("Сума абсолютних відхилень: " + result);
     }
 }
 
